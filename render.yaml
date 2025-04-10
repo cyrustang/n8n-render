@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: n8n
+    env: docker
+    plan: starter
+    autoDeploy: true
+    repo: https://github.com/cyrustang/n8n-render
+    branch: master
+    envVars:
+      - key: N8N_HOST
+        value: n8n-render-free.onrender.com
+      - key: N8N_PORT
+        value: 443
+      - key: N8N_PROTOCOL
+        value: https
+      - key: N8N_EDITOR_BASE_URL
+        value: https://n8n-render-free.onrender.com
+      - key: WEBHOOK_URL
+        value: https://n8n-render-free.onrender.com
+      - key: GENERIC_TIMEZONE
+        value: Asia/Macau
+      - key: TZ
+        value: Asia/Macau
+      - key: N8N_ENCRYPTION_KEY
+        value: zQsgoUPXBiQbJPis5wD2iko7rMwxz4Mr
+      - key: NODE_ENV
+        value: production
+
+    disk:
+      name: n8n-data
+      mountPath: /home/node/.n8n
+      sizeGB: 10
+
+databases: []
